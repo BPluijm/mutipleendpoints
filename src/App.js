@@ -28,7 +28,18 @@ function App() {
 
             try {
                 const response = await axios.get(
-                    `${BASE_URL}${endPoints}`, {
+                    `${BASE_URL}${endPoints}`,
+                    {
+                        params: {
+                            netflixid: '81043135',
+                            orderby: 'rating',
+                            audiosubtitle_andor: 'and',
+                            limit: '100',
+                            subtitle: 'english',
+                            countrylist: '78,46',
+                            audio: 'english',
+                            end_year: '2019'
+                        },
                         headers: {
                             "x-rapidapi-key":
                                 "5f8cd96691msh979b7a58ac3d79bp1afb83jsndb0fb614cce9",
@@ -48,10 +59,10 @@ function App() {
     }, []);
 
     return (
-        <div>
+        <ul>
             {error && <p>{error}</p>}
             {loading && <p>Data wordt geladen...</p>}
-        </div>
+        </ul>
     );
 }
 
